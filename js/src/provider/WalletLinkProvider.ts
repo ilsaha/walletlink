@@ -36,7 +36,6 @@ export class WalletLinkProvider implements Web3Provider {
   private readonly _relay: WalletLinkRelay
   private readonly _chainId: IntNumber
   private readonly _jsonRpcUrl: string
-
   private _addresses: AddressString[] = []
 
   public selectedAddress: AddressString | undefined = this._addresses[0] || undefined;
