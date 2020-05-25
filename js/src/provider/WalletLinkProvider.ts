@@ -39,6 +39,12 @@ export class WalletLinkProvider implements Web3Provider {
 
   private _addresses: AddressString[] = []
 
+  public selectedAddress: AddressString | undefined = this._addresses[0] || undefined;
+  public networkVersion: string = this._chainId.toString(10);
+  public isWalletLink: boolean = true;
+  public host: string = this._jsonRpcUrl;
+  public connected: boolean = true;
+
   constructor(options: Readonly<WalletLinkProviderOptions>) {
     if (!options.relay) {
       throw new Error("realy must be provided")
@@ -59,26 +65,6 @@ export class WalletLinkProvider implements Web3Provider {
         this._addresses = addresses
       }
     }
-  }
-
-  public get selectedAddress(): AddressString | undefined {
-    return this._addresses[0] || undefined
-  }
-
-  public get networkVersion(): string {
-    return this._chainId.toString(10)
-  }
-
-  public get isWalletLink(): boolean {
-    return true
-  }
-
-  public get host(): string {
-    return this._jsonRpcUrl
-  }
-
-  public get connected(): boolean {
-    return true
   }
 
   public isConnected(): boolean {
